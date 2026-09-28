@@ -1,0 +1,44 @@
+:root{--gold:#e9c46a;--gold2:#c9974a;--bg:#050505;--card:#111;--txt:#f5ecd6;--mut:#a89c80;--wa:#25d366}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#2a200c 0,var(--bg) 55%) fixed;color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;min-height:100vh;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+.wrap{max-width:720px;margin:0 auto;padding:24px 16px 90px}
+header{text-align:center;animation:rise .9s ease both}
+.logo{width:96px;height:96px;filter:drop-shadow(0 0 18px rgba(233,196,106,.35))}
+.star{transform-origin:50% 22%;animation:tw 2.4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.5;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+h1{margin:6px 0 0;letter-spacing:.45em;font-weight:500;font-size:26px;background:linear-gradient(90deg,var(--gold2),#fff3c4,var(--gold2));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 4s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.sub{color:var(--mut);font-size:14px;margin-top:6px}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.box{margin-top:22px;background:var(--card);border:1px solid #3a2f16;border-radius:18px;padding:16px;animation:rise .9s .15s ease both;box-shadow:0 0 30px rgba(233,196,106,.06)}
+.row{display:flex;gap:8px}
+input{flex:1;min-width:0;background:#000;border:1px solid #4a3c1b;border-radius:12px;padding:14px;color:var(--txt);font-size:16px;outline:none}
+input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(233,196,106,.15)}
+button,.btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1204;border:0;border-radius:12px;padding:0 20px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:48px;font-family:inherit}
+button:active{transform:scale(.97)}
+.hint{color:var(--mut);font-size:12.5px;margin:10px 2px 0}
+.err{color:#ff8a7a;font-size:13px;margin-top:8px;min-height:16px}
+#result{display:none;margin-top:18px}
+.eta{display:flex;align-items:center;gap:12px;background:#000;border:1px solid #3a2f16;border-radius:14px;padding:14px;margin-bottom:14px}
+.eta b{color:var(--gold)}
+.road{position:relative;height:38px;margin:4px 0 14px}
+.line{position:absolute;left:0;right:0;top:26px;height:3px;background:#2b2210;border-radius:3px;overflow:hidden}
+.line i{display:block;height:100%;width:40%;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:mv 2.2s linear infinite}
+@keyframes mv{from{transform:translateX(-100%)}to{transform:translateX(260%)}}
+.truck{position:absolute;top:0;font-size:24px;animation:drive 6s ease-in-out infinite alternate}
+@keyframes drive{from{left:0}to{left:calc(100% - 30px)}}
+.steps{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);text-align:center;margin-bottom:14px}
+.steps span{flex:1}
+.frame{position:relative;border:1px solid #4a3c1b;border-radius:16px;overflow:hidden;background:#000;height:560px}
+iframe{width:100%;height:100%;border:0;background:#fff;position:relative;z-index:2}
+.load{position:absolute;inset:0;z-index:1;display:grid;place-items:center;color:var(--mut);font-size:13px;text-align:center;padding:16px}
+.spin{width:34px;height:34px;border:3px solid #3a2f16;border-top-color:var(--gold);border-radius:50%;animation:sp 1s linear infinite;margin:0 auto 10px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.actions .btn,.actions button{flex:1;min-width:140px;min-height:44px;font-size:14px}
+.ghost{background:transparent!important;color:var(--gold)!important;border:1px solid #4a3c1b!important}
+.help{margin-top:22px;text-align:center;color:var(--mut);font-size:13.5px}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));background:var(--wa);color:#fff;border-radius:50px;padding:0 18px;min-height:52px;display:flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;box-shadow:0 6px 22px rgba(37,211,102,.4);z-index:9;animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+footer{text-align:center;color:#6f6448;font-size:12px;margin-top:26px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
