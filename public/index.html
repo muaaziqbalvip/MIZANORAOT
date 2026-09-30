@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mizanora – Order Tracking | Apna Order Track Karein</title>
-<meta name="description" content="Mizanora ka order track karein. Tracking ID ya Order ID likhein aur apna parcel live dekhein. Pakistan bhar mein delivery.">
+<meta name="description" content="Mizanora ka order track karein. Local aur China/international tracking ID dono support. Live status, timeline aur WhatsApp support.">
 <meta name="theme-color" content="#050505">
 <link rel="canonical" href="https://mizanora.vercel.app/">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="/icon.svg">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mizanora – Order Tracking">
-<meta property="og:description" content="Apna Mizanora order live track karein.">
+<meta property="og:description" content="Apna Mizanora order live track karein — local aur China/international parcels dono.">
 <meta property="og:url" content="https://mizanora.vercel.app/">
 <meta property="og:image" content="https://mizanora.vercel.app/icon.svg">
 <meta name="twitter:card" content="summary">
@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<div class="bgstars" id="bgstars" aria-hidden="true"></div>
 <main class="wrap">
 <header>
 <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Mizanora logo"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbe3a0"/><stop offset="1" stop-color="#c9974a"/></linearGradient></defs><path class="star" d="M50 8 Q53 19 62 21 Q53 24 50 34 Q47 24 38 21 Q47 19 50 8Z" fill="url(#g)"/><path d="M22 38 L22 88 L30 82 L30 48 L50 66 L70 48 L70 82 L78 88 L78 38 L50 62Z" fill="url(#g)"/></svg>
@@ -28,15 +29,38 @@
 </header>
 
 <section class="box" aria-label="Order tracking">
-<div class="row"><input id="q" placeholder="Tracking ID ya Order ID likhen" autocomplete="off" aria-label="Tracking ID ya Order ID"><button id="go">Track</button></div>
+<div class="row"><input id="q" placeholder="Tracking ID ya Order ID likhen (local ya China)" autocomplete="off" aria-label="Tracking ID ya Order ID"><button id="go">Track</button></div>
 <div class="err" id="err" role="alert"></div>
-<p class="hint">Misal: 29044514302191 ya MZ-1001</p>
+<p class="hint">Har format allow hai: sirf numbers (local) ya letters+numbers (China/international)</p>
+<div class="chips">
+<span class="chip" data-id="MZ-1001">Demo: MZ-1001</span>
+<span class="chip" data-id="LP00123456CN">Demo: China ID</span>
+</div>
 </section>
 
 <section id="result">
-<div class="eta"><div style="font-size:26px">📦</div><div>Aam tor par order <b>3–5 working days</b> mein pohanch jata hai. Neeche live status dekhein.</div></div>
-<div class="road"><div class="truck">🚚</div><div class="line"><i></i></div></div>
-<div class="steps"><span>Booked</span><span>Picked up</span><span>In transit</span><span>Out for delivery</span><span>Delivered</span></div>
+<div class="statusCard">
+<div class="statusInner">
+<div class="pin">📍</div>
+<div class="statusText">
+<div id="statusLabel">Current status</div>
+<div class="meta" id="statusMeta"></div>
+</div>
+</div>
+<div class="pillrow"><span class="pill" id="etaPill"></span><span class="pill" id="typePill"></span></div>
+</div>
+
+<div class="journey">
+<h3>Parcel Journey</h3>
+<div class="route" id="route"></div>
+</div>
+
+<div class="journey">
+<h3>Detailed Timeline</h3>
+<div class="timeline" id="timeline"></div>
+<p class="note">Yeh timeline hamare system ke andaze par mabni hai. Neeche live courier status bhi dekhein.</p>
+</div>
+
 <div class="frame"><div class="load"><div><div class="spin"></div>Live tracking load ho rahi hai…</div></div><iframe id="fr" title="Live order tracking" loading="lazy"></iframe></div>
 <div class="actions">
 <a class="btn ghost" id="ext" target="_blank" rel="noopener">Nayi tab mein kholen</a>
